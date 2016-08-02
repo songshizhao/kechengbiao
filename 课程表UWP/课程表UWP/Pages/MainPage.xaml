@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:课程表UWP"
+    xmlns:model="using:课程表UWP.data"
     xmlns:JiuYouAdUniversal="using:JiuYouAdUniversal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,9 +11,10 @@
 
     <!--声明页面资源-->
     <Page.Resources>
+
         <!--有课模板-->
         <DataTemplate x:Key="DataTemplate1" x:Name="有课模板">
-            <Grid Height="Auto" Width="Auto" CornerRadius="8" Background="#FF78E4D6" Margin="5" x:Name="container1">
+            <Grid Height="Auto" Width="Auto" CornerRadius="8"  Margin="5" x:Name="container1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="28"></RowDefinition>
                     <RowDefinition Height="72"></RowDefinition>
@@ -22,7 +24,7 @@
                     <ColumnDefinition Width="60"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <RelativePanel Grid.Row="0" Grid.Column="0" CornerRadius="8,8,0,0" Grid.ColumnSpan="2" Background="#FF3791AD" Margin="0,0,-20,0">
+                <RelativePanel Grid.Row="0" Grid.Column="0" CornerRadius="8,8,0,0" Grid.ColumnSpan="2" Background="#335230BD" Margin="0,0,-20,0">
 
                     <TextBlock Text="{Binding class_startTime}" Name="startTime" Padding="25,0,5,0" RelativePanel.AlignLeftWithPanel="True" Margin="0,3,-0.667,-27">
 
@@ -48,7 +50,7 @@
 
                 </RelativePanel>
 
-                <Grid Grid.Row="1" Grid.Column="0">
+                <Grid Grid.Row="1" Grid.Column="0" Background="#335230BD">
                     <TextBlock Padding="8" TextWrapping="Wrap" Style="{StaticResource TitleTextBlockStyle}"
                                Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"
                                Text="{Binding class_name_property}">
@@ -56,7 +58,7 @@
                 </Grid>
 
 
-                <StackPanel Orientation="Vertical"  Grid.Column="1" Background="#FF5870F0" Grid.Row="1" Padding="5,0,0,0" Margin="0,0,-20,0" CornerRadius="0,0,8,0">
+                <StackPanel Orientation="Vertical"  Grid.Column="1" Background="#335230BD"  Grid.Row="1" Padding="5,0,0,0" Margin="0,0,-20,0" CornerRadius="0,0,8,0">
                     <StackPanel Padding="2,2,0,0" Orientation="Horizontal">
                         <TextBlock  FontSize="10" Padding="0,0,6,0">教室:</TextBlock>
                         <TextBlock FontSize="10" Text="{Binding class_room_property}"></TextBlock>
@@ -80,9 +82,10 @@
 
             </Grid>
         </DataTemplate>
+
         <!--无课模板-->
         <DataTemplate x:Key="DataTemplate2" x:Name="无课模板">
-            <Grid Height="Auto" Width="Auto" CornerRadius="8" Background="#FF78E4D6" Margin="5" >
+            <Grid Height="Auto" Width="Auto" CornerRadius="8"  Margin="5" x:Name="container1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="28"></RowDefinition>
                     <RowDefinition Height="72"></RowDefinition>
@@ -92,7 +95,7 @@
                     <ColumnDefinition Width="60"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <RelativePanel Grid.Row="0" Grid.Column="0" CornerRadius="8,8,0,0" Grid.ColumnSpan="2" Background="#FF3791AD" Margin="0,0,-20,0">
+                <RelativePanel Grid.Row="0" Grid.Column="0" CornerRadius="8,8,0,0" Grid.ColumnSpan="2" Background="#33F0F7F4" Margin="0,0,-20,0">
 
                     <TextBlock Text="{Binding class_startTime}" Name="startTime" Padding="25,0,5,0" RelativePanel.AlignLeftWithPanel="True" Margin="0,3,-0.667,-27">
 
@@ -102,11 +105,11 @@
 
                     </TextBlock>
 
-                    <Button Name="add" Tapped="add_Tapped" 
+                    <Button Name="delete" Tapped="delete_Tapped" 
                                                 Style="{StaticResource TextBlockButtonStyle}"                            
                                                 RelativePanel.AlignRightWithPanel="True"
                                                 Tag="{Binding class_index_property}" Margin="-45,0,0,0" Width="81" >
-                        <FontIcon  FontFamily="Segoe MDL2 Assets" Glyph="&#xE109;" />
+                        <FontIcon  FontFamily="Segoe MDL2 Assets" Glyph="&#xE74D;" />
                     </Button>
 
                     <Button Name="edit" Tapped="edit_Tapped" 
@@ -117,45 +120,56 @@
                     </Button>
 
                 </RelativePanel>
-
-                <Grid Grid.Row="1" Grid.Column="0">
-                    <TextBlock Padding="8" TextWrapping="Wrap" Style="{StaticResource TitleTextBlockStyle}"
+                <Grid Grid.Row="1" Grid.Column="0" Background="White" Opacity="0.2">
+                    <Grid  Visibility="Collapsed" >
+                        <TextBlock Padding="8" TextWrapping="Wrap" Style="{StaticResource TitleTextBlockStyle}"
                                Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"
-                               >
-                    </TextBlock>
+                               Text="{Binding class_name_property}">
+                        </TextBlock>
+                    </Grid>
                 </Grid>
+                
 
 
-                <StackPanel Orientation="Vertical"  Grid.Column="1" Background="#FF5870F0" Grid.Row="1" Padding="5,0,0,0" Margin="0,0,-20,0" CornerRadius="0,0,8,0">
-                    <StackPanel Padding="2,2,0,0" Orientation="Horizontal">
-
+                <StackPanel Background="White" Opacity="0.2" Orientation="Vertical"  Grid.Column="1"  Grid.Row="1" Padding="5,0,0,0" Margin="0,0,-20,0" CornerRadius="0,0,8,0" >
+                    <StackPanel Padding="2,2,0,0" Orientation="Horizontal" Visibility="Collapsed">
+                        <TextBlock  FontSize="10" Padding="0,0,6,0">教室:</TextBlock>
+                        <TextBlock FontSize="10" Text="{Binding class_room_property}"></TextBlock>
                     </StackPanel>
-                    <StackPanel Padding="2,2,0,0" Orientation="Horizontal">
-
+                    <StackPanel Padding="2,2,0,0" Orientation="Horizontal" Visibility="Collapsed">
+                        <TextBlock FontSize="10" Padding="0,0,6,0">教师:</TextBlock>
+                        <TextBlock FontSize="10" Text="{Binding class_teacher_property}"></TextBlock>
                     </StackPanel>
 
-                    <StackPanel Padding="2,2,0,0" Orientation="Horizontal">
-
+                    <StackPanel Padding="2,2,0,0" Orientation="Horizontal" Visibility="Collapsed">
+                        <TextBlock FontSize="10" Padding="0,0,6,0">学分:</TextBlock>
+                        <TextBlock FontSize="10">4</TextBlock>
                     </StackPanel >
 
-                    <StackPanel Padding="2,2,0,0" Orientation="Horizontal">
-
+                    <StackPanel Padding="2,2,0,0" Orientation="Horizontal" Visibility="Collapsed">
+                        <TextBlock FontSize="10" Padding="0,0,6,0">类型:</TextBlock>
+                        <TextBlock FontSize="10" Text="{Binding class_tag_property}"></TextBlock>
                     </StackPanel>
                 </StackPanel>
 
-
             </Grid>
         </DataTemplate>
-        <local:ListViewTemplateSelector x:Key="listViewTemplateSelector" x:Name="selector"
-                                        DataTemplate1="{StaticResource DataTemplate1}" 
-                                        DataTemplate2="{StaticResource DataTemplate2}">
-        </local:ListViewTemplateSelector>
+
+        
+            <model:ListViewTemplateSelector x:Key="dii" x:Name="selector"
+                                            DataTemplate01="{StaticResource DataTemplate1}"                                                               
+                                            DataTemplate02="{StaticResource DataTemplate2}">
+
+            </model:ListViewTemplateSelector>
+       
+
+
+
     </Page.Resources>
 
-
-
+   
     <!--主页面-->
-    <Grid x:Name="grid"  Background="#FF6D9CDF">
+    <Grid x:Name="grid"  Background="#99ccff">
         <Hub Header="应用模板" Height="Auto" Width="Auto" Name="MainHub" IsEnabled="True" IsHoldingEnabled="True" IsZoomedInView="True" >
             <Hub.HeaderTemplate>
                 <DataTemplate>
@@ -164,11 +178,11 @@
                             <TextBlock Padding="3,0,20,0" FontSize="20">课程表UWP</TextBlock>
 
                             <Button Style="{StaticResource TextBlockButtonStyle}" ToolTipService.ToolTip="设置" Tag="设置" Tapped="Button_Tapped">
-                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE115;" Foreground="#FFBDCB15"   />
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE115;" Foreground="#66cc99"   />
                             </Button>
 
                             <Button Style="{StaticResource TextBlockButtonStyle}" ToolTipService.ToolTip="关于" Tag="关于" Tapped="Button_Tapped">
-                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE170;" Foreground="#FFE2CA36" />
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE170;" Foreground="#ffffff" />
                             </Button>
                                                                               
                         </StackPanel>
@@ -179,10 +193,10 @@
             <HubSection Header="星期一" Width="Auto" Name="day1">
                 <DataTemplate >
                     <Grid>
-                        <ListView  ScrollViewer.VerticalScrollBarVisibility="Hidden" 
-                                  ItemsSource="{Binding}"
-                                  ItemContainerStyleSelector="{StaticResource listViewTemplateSelector}">
-
+                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                                  ItemTemplateSelector="{StaticResource dii}" SelectionMode="None"
+                                  ItemsSource="{Binding}" >
+                            
                         </ListView>
                     </Grid>
                 </DataTemplate>
@@ -191,7 +205,9 @@
             <HubSection Header="星期二" Width="Auto" Name="day2">
                 <DataTemplate >
                     <Grid>
-                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding}" ItemTemplate="{StaticResource DataTemplate1}">
+                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                                  ItemTemplateSelector="{StaticResource dii}" SelectionMode="None"
+                                  ItemsSource="{Binding}" >
 
                         </ListView>
                     </Grid>
@@ -202,7 +218,8 @@
             <HubSection Header="星期三" Width="Auto" Name="day3">
                 <DataTemplate >
                     <Grid>
-                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding}" ItemTemplate="{StaticResource DataTemplate1}">
+                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                                  ItemsSource="{Binding}" ItemTemplateSelector="{StaticResource dii}" SelectionMode="None">
 
                         </ListView>
                     </Grid>
@@ -213,7 +230,7 @@
             <HubSection Header="星期四" Width="Auto" Name="day4">
                 <DataTemplate >
                     <Grid>
-                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding}" ItemTemplate="{StaticResource DataTemplate1}">
+                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding}" ItemTemplateSelector="{StaticResource dii}" SelectionMode="None">
 
                         </ListView>
                     </Grid>
@@ -224,7 +241,7 @@
             <HubSection Header="星期五" Width="Auto" Name="day5">
                 <DataTemplate >
                     <Grid>
-                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding}" ItemTemplate="{StaticResource DataTemplate1}">
+                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding}" ItemTemplateSelector="{StaticResource dii}" SelectionMode="None">
 
                         </ListView>
                     </Grid>
@@ -235,7 +252,7 @@
             <HubSection Header="星期六" Width="Auto" Name="day6">
                 <DataTemplate >
                     <Grid>
-                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding}" ItemTemplate="{StaticResource DataTemplate1}">
+                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding}" ItemTemplateSelector="{StaticResource dii}" SelectionMode="None">
 
                         </ListView>
                     </Grid>
@@ -246,7 +263,7 @@
             <HubSection Header="星期天" Width="Auto" Name="day7">
                 <DataTemplate >
                     <Grid>
-                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding}" ItemTemplate="{StaticResource DataTemplate1}">
+                        <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding}" ItemTemplateSelector="{StaticResource dii}" SelectionMode="None">
 
                         </ListView>
                     </Grid>

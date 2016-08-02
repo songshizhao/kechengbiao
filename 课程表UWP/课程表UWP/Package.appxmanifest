@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="489d1db5-f09e-45af-919b-074831e361a0" Publisher="CN=detai" Version="1.0.0.0" />
+  <Identity Name="7783ssz666.UWP" Publisher="CN=40D8BEA1-60FF-4D64-97BE-1F43901C1C45" Version="1.1.1.0" />
   <mp:PhoneIdentity PhoneProductId="489d1db5-f09e-45af-919b-074831e361a0" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>课程表UWP</DisplayName>
-    <PublisherDisplayName>detai</PublisherDisplayName>
+    <PublisherDisplayName>ssz666</PublisherDisplayName>
     <Logo>Assets\NewStoreLogo.png</Logo>
   </Properties>
   <Dependencies>

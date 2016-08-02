@@ -10,9 +10,9 @@
     <class name="专业课1" index="6" startTime="14:30" endTime="15:15" duration="9" finished="0" tag="专业课" teacher="赵八" room="致知522" weeklimit="单周"></class>
     <class name="体育" index="7" startTime="15:30" endTime="16:15" duration="9" finished="0" tag="必修" teacher="刘九" room="小操场" weeklimit="单周"></class>
     <class name="大学化学" index="8" startTime="16:15" endTime="17:00" duration="9" finished="0" tag="必修" teacher="林十" room="理学楼" weeklimit="单周"></class>
-    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="0" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
-    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="0" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
-    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="0" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>    
+    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="1" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
+    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="1" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
+    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="1" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>    
   </Monday>
   
   <Tuesday>
@@ -24,9 +24,9 @@
     <class name="专业课1" index="6" startTime="14:30" endTime="15:15" duration="9" finished="0" tag="专业课" teacher="赵八" room="致知522" weeklimit="单周"></class>
     <class name="体育" index="7" startTime="15:30" endTime="16:15" duration="9" finished="0" tag="必修" teacher="刘九" room="小操场" weeklimit="单周"></class>
     <class name="大学化学" index="8" startTime="16:15" endTime="17:00" duration="9" finished="0" tag="必修" teacher="林十" room="理学楼" weeklimit="单周"></class>
-    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="0" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
-    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="0" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
-    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="0" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>
+    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="1" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
+    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="1" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
+    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="1" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>
   </Tuesday>
 
   <Wednesday>
@@ -38,9 +38,9 @@
     <class name="专业课1" index="6" startTime="14:30" endTime="15:15" duration="9" finished="0" tag="专业课" teacher="赵八" room="致知522" weeklimit="单周"></class>
     <class name="体育" index="7" startTime="15:30" endTime="16:15" duration="9" finished="0" tag="必修" teacher="刘九" room="小操场" weeklimit="单周"></class>
     <class name="大学化学" index="8" startTime="16:15" endTime="17:00" duration="9" finished="0" tag="必修" teacher="林十" room="理学楼" weeklimit="单周"></class>
-    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="0" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
-    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="0" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
-    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="0" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>
+    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="1" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
+    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="1" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
+    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="1" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>
   </Wednesday>
   
   <Thursday>
@@ -52,9 +52,9 @@
     <class name="专业课1" index="6" startTime="14:30" endTime="15:15" duration="9" finished="0" tag="专业课" teacher="赵八" room="致知522" weeklimit="单周"></class>
     <class name="体育" index="7" startTime="15:30" endTime="16:15" duration="9" finished="0" tag="必修" teacher="刘九" room="小操场" weeklimit="单周"></class>
     <class name="大学化学" index="8" startTime="16:15" endTime="17:00" duration="9" finished="0" tag="必修" teacher="林十" room="理学楼" weeklimit="单周"></class>
-    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="0" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
-    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="0" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
-    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="0" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>
+    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="1" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
+    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="1" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
+    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="1" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>
   </Thursday>   
   
   <Friday>
@@ -66,9 +66,9 @@
     <class name="专业课1" index="6" startTime="14:30" endTime="15:15" duration="9" finished="0" tag="专业课" teacher="赵八" room="致知522" weeklimit="单周"></class>
     <class name="体育" index="7" startTime="15:30" endTime="16:15" duration="9" finished="0" tag="必修" teacher="刘九" room="小操场" weeklimit="单周"></class>
     <class name="大学化学" index="8" startTime="16:15" endTime="17:00" duration="9" finished="0" tag="必修" teacher="林十" room="理学楼" weeklimit="单周"></class>
-    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="0" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
-    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="0" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
-    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="0" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>
+    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="1" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
+    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="1" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
+    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="1" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>
   </Friday> 
   
   <Saturday>
@@ -80,9 +80,9 @@
     <class name="专业课1" index="6" startTime="14:30" endTime="15:15" duration="9" finished="0" tag="专业课" teacher="赵八" room="致知522" weeklimit="单周"></class>
     <class name="体育" index="7" startTime="15:30" endTime="16:15" duration="9" finished="0" tag="必修" teacher="刘九" room="小操场" weeklimit="单周"></class>
     <class name="大学化学" index="8" startTime="16:15" endTime="17:00" duration="9" finished="0" tag="必修" teacher="林十" room="理学楼" weeklimit="单周"></class>
-    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="0" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
-    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="0" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
-    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="0" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>
+    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="1" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
+    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="1" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
+    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="1" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>
   </Saturday> 
 
   <Sunday>
@@ -94,9 +94,9 @@
     <class name="专业课1" index="6" startTime="14:30" endTime="15:15" duration="9" finished="0" tag="专业课" teacher="赵八" room="致知522" weeklimit="单周"></class>
     <class name="体育" index="7" startTime="15:30" endTime="16:15" duration="9" finished="0" tag="必修" teacher="刘九" room="小操场" weeklimit="单周"></class>
     <class name="大学化学" index="8" startTime="16:15" endTime="17:00" duration="9" finished="0" tag="必修" teacher="林十" room="理学楼" weeklimit="单周"></class>
-    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="0" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
-    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="0" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
-    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="0" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>
+    <class name="现代音乐" index="9" startTime="19:30" endTime="20:30" duration="9" finished="1" tag="旁听" teacher="孙十一" room="文体中心201" weeklimit="单周"></class>
+    <class name="舞蹈" index="10" startTime="20:45" endTime="21:45" duration="9" finished="1" tag="选修" teacher="周十二" room="文体中心201" weeklimit="单周"></class>
+    <class name="晚自习" index="11" startTime="22:00" endTime="23:00" duration="9" finished="1" tag="自习" teacher="政十三" room="管理楼303" weeklimit="单周"></class>
   </Sunday>   
 
 

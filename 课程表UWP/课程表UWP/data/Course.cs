@@ -21,6 +21,8 @@ namespace 课程表UWP.data
         private string class_room;
         private string class_teacher;
         private string class_weeklimit;
+        private string class_finished;
+
 
         public Course()
         {
@@ -172,6 +174,30 @@ namespace 课程表UWP.data
                 }
             }
         }
+
+
+
+        /// <summary>
+        /// 课程名
+        /// </summary>
+        public string class_finished_property
+        {
+            get
+            {
+                return class_finished;
+            }
+
+            set
+            {
+                if (value != class_finished)
+                {
+                    class_finished = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
 
 
         public event PropertyChangedEventHandler PropertyChanged;

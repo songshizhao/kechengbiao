@@ -1,20 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Xml;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using 课程表UWP.data;
 
@@ -26,8 +15,6 @@ namespace 课程表UWP.Pages
     {
         //新建课程对象
         Course acourse = new Course();
-
-
 
 
         public EditPage()
@@ -109,29 +96,6 @@ namespace 课程表UWP.Pages
 
 
 
-
-        //                //获取开始时间
-        //                string start = doc.DocumentElement.Attributes.GetNamedItem("startTime").NodeValue.ToString();
-        //                start_time.Time = TimeSpan.Parse(start);
-        //                string end = doc.DocumentElement.Attributes.GetNamedItem("endTime").NodeValue.ToString();
-        //                end_time.Time = TimeSpan.Parse(end);
-        //                //获取课程周数及单双周
-        //                weekTxt.Text = doc.DocumentElement.Attributes.GetNamedItem("week").NodeValue.ToString();
-        //                string sdmode = doc.DocumentElement.Attributes.GetNamedItem("sdmode").NodeValue.ToString();
-        //                switch (sdmode)
-        //                {
-        //                    case "无":
-        //                        SorD.SelectedIndex = 0;
-        //                        break;
-        //                    case "单周":
-        //                        SorD.SelectedIndex = 1;
-        //                        break;
-        //                    case "双周":
-        //                        SorD.SelectedIndex = 2;
-        //                        break;
- 
-
-        ///************************************/
         ////保存
         private async void save_Click(object sender, RoutedEventArgs e)
         {
@@ -163,7 +127,7 @@ namespace 课程表UWP.Pages
                             each_InnerElement.SetAttribute("room", acourse.class_room_property);
                             each_InnerElement.SetAttribute("teacher", acourse.class_teacher_property);
                             each_InnerElement.SetAttribute("weeklimit", acourse.class_weeklimit_property);
-
+                            each_InnerElement.SetAttribute("finished", "0");
 
                             string st = start_time.Time.ToString().Remove(start_time.Time.ToString().Length - 3, 3);
                             string et = end_time.Time.ToString().Remove(end_time.Time.ToString().Length - 3, 3);
