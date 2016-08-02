@@ -24,7 +24,10 @@ namespace 课程表UWP
     {
         public MainPage()
         {
+            View = new ViewModel.ViewModel();
             this.InitializeComponent();
         }
+
+        private ViewModel.ViewModel View { set; get; }
     }
 }

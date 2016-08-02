@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="课程表UWP.Pages.SetPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:课程表UWP.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="textblock" Text="设置" FontSize="30" Grid.Row="0" Margin="10,10"/>
+        <ToggleSwitch x:Name="Delete_all" Header="清除所有数据" Margin="10,10,10,0"
+                      Grid.Row="3" OnContent="开" OffContent="关" Toggled="Delete_all_Toggled" />
+        <ToggleSwitch x:Name="DarkTheme" Header="夜间模式" Margin="10,10,10,0"
+                      Grid.Row="2" OnContent="开启" OffContent="关闭" Toggled="DarkTheme_Toggled"/>
+        <DatePicker x:Name="SetWeek" Header="设置周数" Grid.Row="1"
+                    Margin="10,10,10,0" DateChanged="SetWeek_DateChanged" 
+                    x:FieldModifier="public"/>
+    </Grid>
+</Page>
