@@ -1,6 +1,5 @@
 ﻿{
   "dependencies": {
-    "JYAdControl": "2.3.6",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
   },
   "frameworks": {
