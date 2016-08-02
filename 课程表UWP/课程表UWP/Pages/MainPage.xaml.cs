@@ -50,8 +50,7 @@ namespace 课程表UWP
 
         private async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            
-
+     
             StorageFolder folder = ApplicationData.Current.LocalFolder;
             StorageFile XmlFileInApp, XmlFileInLocal;
             //如果本地文件夹内不存在xml记录，复制安装包内xml过去
@@ -154,9 +153,7 @@ namespace 课程表UWP
 
         private void delete_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            //Button deletebutton = (Button)sender;            
-            //ContentPresenter myContentPresenter = (ContentPresenter)(ListView.ItemsControlFromItemContainer();
-            //myContentPresenter.ContentTemplate = DataTemplate.;
+            selector.SelectTemplate("没有");
 
         }
 

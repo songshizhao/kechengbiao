@@ -10,9 +10,6 @@
 
     <!--声明页面资源-->
     <Page.Resources>
-
-
-
         <!--有课模板-->
         <DataTemplate x:Key="DataTemplate1" x:Name="有课模板">
             <Grid Height="Auto" Width="Auto" CornerRadius="8" Background="#FF78E4D6" Margin="5" x:Name="container1">
@@ -83,9 +80,6 @@
 
             </Grid>
         </DataTemplate>
-
-        <!--有课模板-->
-
         <!--无课模板-->
         <DataTemplate x:Key="DataTemplate2" x:Name="无课模板">
             <Grid Height="Auto" Width="Auto" CornerRadius="8" Background="#FF78E4D6" Margin="5" >
@@ -134,56 +128,31 @@
 
                 <StackPanel Orientation="Vertical"  Grid.Column="1" Background="#FF5870F0" Grid.Row="1" Padding="5,0,0,0" Margin="0,0,-20,0" CornerRadius="0,0,8,0">
                     <StackPanel Padding="2,2,0,0" Orientation="Horizontal">
-                       
+
                     </StackPanel>
                     <StackPanel Padding="2,2,0,0" Orientation="Horizontal">
-                       
+
                     </StackPanel>
 
                     <StackPanel Padding="2,2,0,0" Orientation="Horizontal">
-                       
+
                     </StackPanel >
 
                     <StackPanel Padding="2,2,0,0" Orientation="Horizontal">
-                       
+
                     </StackPanel>
                 </StackPanel>
 
 
             </Grid>
         </DataTemplate>
-
-
-
-
-        <!--MenuFlyout-->
-        <!--
-        <MenuFlyout x:Key="_MenuFlyout">
-            <MenuFlyoutItem Text="删除" Click="DeleteCourse"/>
-            <MenuFlyoutItem Text="编辑" Click="EditCourse"/>
-        </MenuFlyout>
-
-        -->
-        <!--样式设计-->
-        <!--
-        <Style x:Key="Listbox_style" TargetType="ListBox">
-            <Setter Property="FlyoutBase.AttachedFlyout" Value="{StaticResource _MenuFlyout}"/>
-        </Style>-->
+        <local:ListViewTemplateSelector x:Key="listViewTemplateSelector" x:Name="selector"
+                                        DataTemplate1="{StaticResource DataTemplate1}" 
+                                        DataTemplate2="{StaticResource DataTemplate2}">
+        </local:ListViewTemplateSelector>
     </Page.Resources>
 
-    <!--应用命令栏-->
-    <!--<Page.BottomAppBar>
-        <CommandBar >
-            <CommandBar.Content>
-                <Grid/>
-            </CommandBar.Content>
-            <AppBarButton Icon="Add" Label="添加" />
-            <AppBarButton Icon="Setting" Label="设置" />
-            <CommandBar.SecondaryCommands>
-                <AppBarButton Label="关于"  />
-            </CommandBar.SecondaryCommands>
-        </CommandBar>
-    </Page.BottomAppBar>-->
+
 
     <!--主页面-->
     <Grid x:Name="grid"  Background="#FF6D9CDF">
@@ -210,7 +179,9 @@
             <HubSection Header="星期一" Width="Auto" Name="day1">
                 <DataTemplate >
                     <Grid>
-                        <ListView Name="day1_list" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding}" ItemTemplate="{StaticResource DataTemplate1}">
+                        <ListView  ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                                  ItemsSource="{Binding}"
+                                  ItemContainerStyleSelector="{StaticResource listViewTemplateSelector}">
 
                         </ListView>
                     </Grid>
