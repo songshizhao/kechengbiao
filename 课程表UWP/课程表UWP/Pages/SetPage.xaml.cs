@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Xml;
 using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Popups;
@@ -13,130 +16,101 @@ namespace 课程表UWP.Pages
 
     public sealed partial class SetPage : Page
     {
-        /************************************/
-        //获取本地数据存储容器
-        ApplicationDataContainer container = ApplicationData.Current.LocalSettings;
-        /************************************/
 
-        /************************************/
+
         public SetPage()
         {
             this.InitializeComponent();
-            GetSetting();
+
         }
 
-        /************************************/
-        //加载设置数据
-        public void GetSetting()
-        {
-            if (container.Values["Theme"] != null)
-            {
-                if (container.Values["Theme"].ToString() == "夜间模式")
-                {
-                    DarkTheme.IsOn = true;
-                    ChangedDark();
-                }
-                else
-                {
-                    DarkTheme.IsOn = false;
-                    ChangedLight();
-                }
-            }
-            else
-            {
-                DarkTheme.IsOn = false;
-            }
-        }
-        /************************************/
 
-        /************************************/
-        //显示周数
-        private void SetWeek_DateChanged(object sender, DatePickerValueChangedEventArgs e)
-        {
-            //获取datepicker所选选的日期是第几天         
-            container.Values["Day"] = SetWeek.Date.DayOfYear.ToString();
-        }
-        /************************************/
-
-
-    
-        /************************************/
         //清除所有课程信息
         private async void Delete_all_Toggled(object sender, RoutedEventArgs e)
         {
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFile XmlFileInLocal;
+
+            //读xml文件数据
+            XmlFileInLocal = await folder.GetFileAsync("class");
+            Stream XmlReader = await XmlFileInLocal.OpenStreamForReadAsync();
+            XmlDocument XmlDoc = new XmlDocument();
+            XmlDoc.Load(XmlReader);
+            XmlReader.Dispose();
             if (Delete_all.IsOn == true)
             {
-                StorageFolder Monfolder = await ApplicationData.Current.LocalFolder.GetFolderAsync("Monlist");
-                await Monfolder.DeleteAsync();
-                StorageFolder Tuesfolder = await ApplicationData.Current.LocalFolder.GetFolderAsync("Tueslist");
-                await Tuesfolder.DeleteAsync();
-                StorageFolder Wedfolder = await ApplicationData.Current.LocalFolder.GetFolderAsync("Wedlist");
-                await Wedfolder.DeleteAsync();
-                StorageFolder Thursfolder = await ApplicationData.Current.LocalFolder.GetFolderAsync("Thurslist");
-                await Thursfolder.DeleteAsync();
-                StorageFolder Frifolder = await ApplicationData.Current.LocalFolder.GetFolderAsync("Frilist");
-                await Frifolder.DeleteAsync();
-                StorageFolder Satfolder = await ApplicationData.Current.LocalFolder.GetFolderAsync("Satlist");
-                await Satfolder.DeleteAsync();
-                StorageFolder Sunfolder = await ApplicationData.Current.LocalFolder.GetFolderAsync("Sunlist");
-                await Sunfolder.DeleteAsync();
-                //显示消息框
-                await new MessageDialog("清除完成").ShowAsync();
-                //
-                Delete_all.IsOn = false;
-
-                //删除应用设置
-                //container.Values.Remove("Day");
-            }
-            else
-            {
-                return;
-            }
-        }
-        /************************************/
-
-        /*****************************/
-        //切换夜间模式
-        private void DarkTheme_Toggled(object sender, RoutedEventArgs e)
-        {
-            if (DarkTheme.IsOn == true)
-            {
-                //开启夜间模式  
-                container.Values["Theme"] = "夜间模式";
-                ChangedDark();
-                if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+                foreach (var element in XmlDoc.DocumentElement)
                 {
-                    StatusBar statusBar = StatusBar.GetForCurrentView();
-                    statusBar.BackgroundColor = Colors.Black;
-                    statusBar.ForegroundColor = Colors.White;
-                    statusBar.BackgroundOpacity = 1;
+                    XmlElement each_element = (XmlElement)element;
+                    foreach (var InnerElement in each_element)
+                    {
+                        XmlElement each_InnerElement = (XmlElement)InnerElement;
+                        each_InnerElement.SetAttribute("finished", "1");
+                    }
                 }
             }
             else
             {
-                //关闭夜间模式
-                container.Values["Theme"] = "日间模式";
-                ChangedLight();
-                if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+                foreach (var element in XmlDoc.DocumentElement)
                 {
-                    StatusBar statusBar = StatusBar.GetForCurrentView();
-                    statusBar.BackgroundColor = Colors.White;
-                    statusBar.ForegroundColor = Colors.Black;
-                    statusBar.BackgroundOpacity = 1;
+                    XmlElement each_element = (XmlElement)element;
+                    foreach (var InnerElement in each_element)
+                    {
+                        XmlElement each_InnerElement = (XmlElement)InnerElement;
+                        each_InnerElement.SetAttribute("finished", "1");
+                    }
                 }
             }
-        }
-        //夜间模式
-        private void ChangedDark()
-        {
-            RequestedTheme = ElementTheme.Dark;
-        }  
-        //日间模式
-        private void ChangedLight()
-        {
-            RequestedTheme = ElementTheme.Light;
-        }
-        /*****************************/
+            ////保存xml到local
+            StorageFile xml = await folder.CreateFileAsync("class", CreationCollisionOption.ReplaceExisting);
+            Stream fileWriter = await xml.OpenStreamForWriteAsync();
+            XmlDoc.Save(fileWriter);
+            fileWriter.Dispose();
 
+
+            //显示消息框
+            await new MessageDialog("清除完成").ShowAsync();
+            Delete_all.IsOn = true;
+            Frame.Navigate(typeof(MainPage));
+
+        }
+
+
+        //设置每天的课节数
+        private async void Button_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            int number;
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            //获取安装包内xml
+            StorageFile XmlFileInApp = await StorageFile.GetFileFromApplicationUriAsync(new Uri(@"ms-appx:///data\class.xml"));
+            Stream XmlReader = await XmlFileInApp.OpenStreamForReadAsync();
+            //读取xml到内存
+            XmlDocument xml = new XmlDocument();
+            xml.Load(XmlReader);
+
+
+            foreach (var element in xml.DocumentElement)
+            {
+                XmlElement each_element = (XmlElement)element;
+                XmlNodeList nodelist = each_element.ChildNodes;
+                number = cmbbox.SelectedIndex + 1;
+                for (int i = nodelist.Count - 1; i >= number; i--)
+                {
+                    XmlNode n = nodelist[i];
+                    each_element.RemoveChild(n);
+
+                }
+            }
+ 
+                //在本地新建xml文件
+                StorageFile XmlFileInLocal = await folder.CreateFileAsync("class", CreationCollisionOption.ReplaceExisting);
+                //保存xml文件到local
+                Stream XmlWriter = await XmlFileInLocal.OpenStreamForWriteAsync();
+                xml.Save(XmlWriter);
+                XmlWriter.Dispose();
+
+                Frame.Navigate(typeof(MainPage));
+          }
+       }
     }
-}
+

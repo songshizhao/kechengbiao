@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid  Background="#99ccff">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -15,13 +15,43 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="textblock" Text="设置" FontSize="30" Grid.Row="0" Margin="10,10"/>
-        <ToggleSwitch x:Name="Delete_all" Header="清除所有数据" Margin="10,10,10,0"
-                      Grid.Row="3" OnContent="开" OffContent="关" Toggled="Delete_all_Toggled" />
-        <ToggleSwitch x:Name="DarkTheme" Header="夜间模式" Margin="10,10,10,0"
-                      Grid.Row="2" OnContent="开启" OffContent="关闭" Toggled="DarkTheme_Toggled"/>
-        <DatePicker x:Name="SetWeek" Header="设置周数" Grid.Row="1"
-                    Margin="10,10,10,0" DateChanged="SetWeek_DateChanged" 
-                    x:FieldModifier="public"/>
+        <TextBlock x:Name="textblock" Text="设置" FontSize="30" Grid.Row="0" Margin="10,10,10,20"/>
+
+        <StackPanel Grid.Row="1" Margin="10,0,0,10" Width="349"  Orientation="Vertical">
+            <TextBlock Foreground="Red" TextWrapping="Wrap">选择每天有几节课</TextBlock>
+
+            <TextBlock Foreground="Blue" TextWrapping="Wrap"> 点击保存按钮将会清除删除课程的数据，假设当前设置为每天5节课，如选择每天1节课，则其余4节课的数据会按时间自下而上的清除，请慎重选择！</TextBlock>
+
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Name="cmbbox"   Width="130" SelectedIndex="0"  Height="50" Background="#667BC7EE">
+                    <ComboBoxItem Height="50" BorderBrush="#FF7989DD" BorderThickness="2" Background="#FF099FED" >1节课</ComboBoxItem>
+                    <ComboBoxItem Height="50" BorderBrush="#FF7989DD" BorderThickness="2" Background="#FF099FED">2节课</ComboBoxItem>
+                    <ComboBoxItem Height="50" BorderBrush="#FF7989DD" BorderThickness="2" Background="#FF099FED">3节课</ComboBoxItem>
+                    <ComboBoxItem Height="50" BorderBrush="#FF7989DD" BorderThickness="2" Background="#FF099FED">4节课</ComboBoxItem>
+                    <ComboBoxItem Height="50" BorderBrush="#FF7989DD" BorderThickness="2" Background="#FF099FED">5节课</ComboBoxItem>
+                    <ComboBoxItem Height="50" BorderBrush="#FF7989DD" BorderThickness="2" Background="#FF099FED">6节课</ComboBoxItem>
+                    <ComboBoxItem Height="50" BorderBrush="#FF7989DD" BorderThickness="2" Background="#FF099FED">7节课</ComboBoxItem>
+                    <ComboBoxItem Height="50" BorderBrush="#FF7989DD" BorderThickness="2" Background="#FF099FED">8节课</ComboBoxItem>
+                    <ComboBoxItem Height="50" BorderBrush="#FF7989DD" BorderThickness="2" Background="#FF099FED">9节课</ComboBoxItem>
+                    <ComboBoxItem Height="50" BorderBrush="#FF7989DD" BorderThickness="2" Background="#FF099FED">10节课</ComboBoxItem>
+                    <ComboBoxItem Height="50" BorderBrush="#FF7989DD" BorderThickness="2" Background="#FF099FED">11节课</ComboBoxItem>
+                </ComboBox>
+
+                <Button VerticalAlignment="Center"  Margin="5" Height="40" Width="64" Foreground="Red" Style="{StaticResource TextBlockButtonStyle}" Tapped="Button_Tapped">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE105;" FontSize="30"/>
+                </Button>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel  Grid.Row="3" Margin="10,10,10,0" Width="349">
+            <ToggleSwitch x:Name="Delete_all" Header="清空所有课节" 
+                      OnContent="开" OffContent="关" Toggled="Delete_all_Toggled" />
+            <TextBlock Foreground="Blue" TextWrapping="Wrap"> 点击清除所有数据不会改变每天的课节数，但将会隐藏所有课节信息，如想清除某一节的显示信息（比如已经结课），请点击主页面上该每节课右上角的删除按钮</TextBlock>
+            <TextBlock Foreground="Green" TextWrapping="Wrap"> 说明：此操作并不会清空后台数据，可通过编辑找回</TextBlock>
+        </StackPanel>
+       
+        
+
     </Grid>
 </Page>

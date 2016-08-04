@@ -35,6 +35,33 @@ namespace 课程表UWP
         //数据读取初始化
         async void initialize()
         {
+
+            switch (DateTime.Now.DayOfWeek.ToString())
+            {
+                case "Monday":
+                    dayofweek.Text = "星期一"+DateTime.Now.Month.ToString() + "月" + DateTime.Now.Day.ToString() + "日" ;
+                    break;
+                case "Tuesday":
+                    dayofweek.Text ="星期二"+ DateTime.Now.Month.ToString() + "月" + DateTime.Now.Day.ToString() + "日";
+                    break;
+                case "Wednesday":
+                    dayofweek.Text = "星期三"+ DateTime.Now.Month.ToString() + "月" + DateTime.Now.Day.ToString() + "日" ;
+                    break;
+                case "Thursday":
+                    dayofweek.Text ="星期四" + DateTime.Now.Month.ToString() + "月" + DateTime.Now.Day.ToString() + "日" ;
+                    break;
+                case "Friday":
+                    dayofweek.Text ="星期五" + DateTime.Now.Month.ToString() + "月" + DateTime.Now.Day.ToString() + "日" ;
+                    break;
+                case "Saturday":
+                    dayofweek.Text = "星期六"+ DateTime.Now.Month.ToString() + "月" + DateTime.Now.Day.ToString() + "日" ;
+                    break;
+                case "Sunday":
+                    dayofweek.Text = "星期天"+ DateTime.Now.Month.ToString() + "月" + DateTime.Now.Day.ToString() + "日" ;
+                    break;
+            }
+
+
             StorageFolder folder = ApplicationData.Current.LocalFolder;
             StorageFile XmlFileInApp, XmlFileInLocal;
             //如果本地文件夹内不存在xml记录，复制安装包内xml过去
@@ -76,11 +103,36 @@ namespace 课程表UWP
                     acourse.class_index_property[1] = each_InnerElement.GetAttribute("index");
                     acourse.class_duration_property = each_InnerElement.GetAttribute("duration");
                     acourse.class_startTime = each_InnerElement.GetAttribute("startTime");
-                    acourse.class_endTime = each_InnerElement.GetAttribute("endTime");
-                    acourse.class_tag_property = each_InnerElement.GetAttribute("tag");
+                    acourse.class_endTime = each_InnerElement.GetAttribute("endTime");                   
                     acourse.class_room_property = each_InnerElement.GetAttribute("room");
+                    acourse.class_score_property = each_InnerElement.GetAttribute("score");
                     acourse.class_teacher_property = each_InnerElement.GetAttribute("teacher");
-                    acourse.class_weeklimit_property = each_InnerElement.GetAttribute("weeklimit");
+                    acourse.class_type_property =Convert.ToInt32(each_InnerElement.GetAttribute("type"));
+
+                    switch (acourse.class_type_property)
+                    {
+                        case 0:
+                            acourse.class_tag_property = "必修";
+                            break;
+                        case 1:
+                            acourse.class_tag_property = "选修";
+                            break;
+                        case 2:
+                            acourse.class_tag_property = "旁听";
+                            break;
+                        case 3:
+                            acourse.class_tag_property = "专业课";
+                            break;
+                        case 4:
+                            acourse.class_tag_property = "非学分绩";
+                            break;
+                        case 5:
+                            acourse.class_tag_property = "学分绩";
+                            break;
+                }
+
+
+                    acourse.class_weeklimit_property = Convert.ToInt32(each_InnerElement.GetAttribute("weeklimit"));
                     acourse.class_finished_property = each_InnerElement.GetAttribute("finished");
                     //Debug.WriteLine(acourse.class_index_property);
                     switch (each_element.Name)
@@ -178,10 +230,7 @@ namespace 课程表UWP
 
 
         }
-        private void add_Tapped(object sender, TappedRoutedEventArgs e)
-        {
 
-        }
 
         private void Button_Tapped(object sender, TappedRoutedEventArgs e)
         {

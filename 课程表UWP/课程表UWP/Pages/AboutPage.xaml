@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="#99ccff">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -16,11 +16,15 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="课程表" Grid.Row="0" FontSize="30" Margin="10,10"/>
-        <TextBlock Text="版本号   1.1.0.0" Grid.Row="1" FontSize="20" Margin="10,0,10,0"/>
-        <TextBlock Text="作者       枫叶" Grid.Row="2" FontSize="20" Margin="10,10,10,0"/>
-        <TextBlock Text="联系方式" Grid.Row="3" FontSize="20" Margin="10,10,10,0"/>
-        <HyperlinkButton Content="detail1218@outlook.com" HorizontalAlignment="Left" VerticalAlignment="Top"
-                         Grid.Row="4" Foreground="Red" Margin="10,0,10,0"/>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="课程表"  FontSize="30" Margin="10,10"/>
+            <TextBlock Text="作者1          枫叶"  FontSize="20" Margin="10,10,10,0"/>
+            <TextBlock Text="作者2          ssz666"  FontSize="20" Margin="10,10,10,0"/>
+            <TextBlock Text="意见反馈     songshizhao@live.com" FontSize="20" Margin="10,10,10,0"/>
+            
+            <TextBlock Text="版本日期     2016年8月4日"  FontSize="20" Margin="10,10,10,0"/>
+            <TextBlock Text="版本号         Verson1.2"  FontSize="20" Margin="10,10,10,0"/>
+        </StackPanel>
+        
     </Grid>
 </Page>

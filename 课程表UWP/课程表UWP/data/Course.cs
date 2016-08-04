@@ -17,10 +17,12 @@ namespace 课程表UWP.data
         private string class_name;
         private string[] class_index;
         private string class_duration;
-        private string class_tag;
+        private int class_type;
+        private string class_score;
         private string class_room;
+        private string class_tag;
         private string class_teacher;
-        private string class_weeklimit;
+        private int class_weeklimit;
         private string class_finished;
 
 
@@ -36,25 +38,7 @@ namespace 课程表UWP.data
         public TimeSpan endTime { get; set; }
 
 
-        /// <summary>
-        /// 课程名
-        /// </summary>
-        public string class_name_property
-        {
-            get
-            {
-                return class_name;
-            }
 
-            set
-            {
-                if (value != class_name)
-                {
-                    class_name = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
 
         /// <summary>
         /// 课程时间,数组（星期，课节），例如（monday，1）是星期一的第一节课
@@ -75,6 +59,70 @@ namespace 课程表UWP.data
                 }
             }
         }
+
+
+        /// <summary>
+        ///学分
+        /// </summary>
+        public string class_score_property
+        {
+            get
+            {
+                return class_score;
+            }
+
+            set
+            {
+                if (value != class_score)
+                {
+                    class_score = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+
+        /// <summary>
+        ///类型string，必修选修旁听
+        /// </summary>
+        public string class_tag_property
+        {
+            get
+            {
+                return class_tag;
+            }
+
+            set
+            {
+                if (value != class_tag)
+                {
+                    class_tag = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        ///课程名字
+        /// </summary>
+        public string class_name_property
+        {
+            get
+            {
+                return class_name;
+            }
+
+            set
+            {
+                if (value != class_name)
+                {
+                    class_name = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
 
         /// <summary>
         /// 持续时间，例如：18=18周
@@ -97,20 +145,20 @@ namespace 课程表UWP.data
         }
 
         /// <summary>
-        /// 课程类型：主修？选修？旁听？专业课？
+        /// 课程类型指示数：主修？选修？旁听？专业课？
         /// </summary>
-        public string class_tag_property
+        public int class_type_property
         {
             get
             {
-                return class_tag;
+                return class_type;
             }
 
             set
             {
-                if (value != class_tag)
+                if (value != class_type)
                 {
-                    class_tag = value;
+                    class_type = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -158,7 +206,7 @@ namespace 课程表UWP.data
         /// <summary>
         ///单双周限制
         /// </summary>
-        public string class_weeklimit_property
+        public int class_weeklimit_property
         {
             get
             {
@@ -178,7 +226,7 @@ namespace 课程表UWP.data
 
 
         /// <summary>
-        /// 课程名
+        /// 是否结课
         /// </summary>
         public string class_finished_property
         {

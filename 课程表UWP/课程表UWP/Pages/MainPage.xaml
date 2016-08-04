@@ -24,7 +24,7 @@
                     <ColumnDefinition Width="60"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <RelativePanel Grid.Row="0" Grid.Column="0" CornerRadius="8,8,0,0" Grid.ColumnSpan="2" Background="#335230BD" Margin="0,0,-20,0">
+                <RelativePanel Grid.Row="0" Grid.Column="0" CornerRadius="8,8,0,0" Grid.ColumnSpan="2" Background="#33FFFFFF" Margin="0,0,-20,0">
 
                     <TextBlock Text="{Binding class_startTime}" Name="startTime" Padding="25,0,5,0" RelativePanel.AlignLeftWithPanel="True" Margin="0,3,-0.667,-27">
 
@@ -50,7 +50,7 @@
 
                 </RelativePanel>
 
-                <Grid Grid.Row="1" Grid.Column="0" Background="#335230BD">
+                <Grid Grid.Row="1" Grid.Column="0" Background="#33FFFFFF">
                     <TextBlock Padding="8" TextWrapping="Wrap" Style="{StaticResource TitleTextBlockStyle}"
                                Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"
                                Text="{Binding class_name_property}">
@@ -58,7 +58,7 @@
                 </Grid>
 
 
-                <StackPanel Orientation="Vertical"  Grid.Column="1" Background="#335230BD"  Grid.Row="1" Padding="5,0,0,0" Margin="0,0,-20,0" CornerRadius="0,0,8,0">
+                <StackPanel Orientation="Vertical"  Grid.Column="1" Background="#33FFFFFF"  Grid.Row="1" Padding="5,0,0,0" Margin="0,0,-20,0" CornerRadius="0,0,8,0">
                     <StackPanel Padding="2,2,0,0" Orientation="Horizontal">
                         <TextBlock  FontSize="10" Padding="0,0,6,0">教室:</TextBlock>
                         <TextBlock FontSize="10" Text="{Binding class_room_property}"></TextBlock>
@@ -70,7 +70,7 @@
 
                     <StackPanel Padding="2,2,0,0" Orientation="Horizontal">
                         <TextBlock FontSize="10" Padding="0,0,6,0">学分:</TextBlock>
-                        <TextBlock FontSize="10">4</TextBlock>
+                        <TextBlock FontSize="10" Text="{Binding class_score_property}" ></TextBlock>
                     </StackPanel >
 
                     <StackPanel Padding="2,2,0,0" Orientation="Horizontal">
@@ -128,7 +128,7 @@
                         </TextBlock>
                     </Grid>
                 </Grid>
-                
+
 
 
                 <StackPanel Background="White" Opacity="0.2" Orientation="Vertical"  Grid.Column="1"  Grid.Row="1" Padding="5,0,0,0" Margin="0,0,-20,0" CornerRadius="0,0,8,0" >
@@ -155,40 +155,41 @@
             </Grid>
         </DataTemplate>
 
-        
-            <model:ListViewTemplateSelector x:Key="dii" x:Name="selector"
+
+        <model:ListViewTemplateSelector x:Key="dii" x:Name="selector"
                                             DataTemplate01="{StaticResource DataTemplate1}"                                                               
                                             DataTemplate02="{StaticResource DataTemplate2}">
 
-            </model:ListViewTemplateSelector>
-       
+        </model:ListViewTemplateSelector>
+
 
 
 
     </Page.Resources>
 
-   
+
     <!--主页面-->
     <Grid x:Name="grid"  Background="#99ccff">
-        <Hub Header="应用模板" Height="Auto" Width="Auto" Name="MainHub" IsEnabled="True" IsHoldingEnabled="True" IsZoomedInView="True" >
-            <Hub.HeaderTemplate>
-                <DataTemplate>
+        <Hub  Height="Auto" Width="Auto" Name="MainHub" IsEnabled="True" IsHoldingEnabled="True" IsZoomedInView="True" >
+            <Hub.Header>
+               
                     <Grid>
                         <StackPanel Orientation="Horizontal" Padding="5" Margin="0,-6,0,-13">
-                            <TextBlock Padding="3,0,20,0" FontSize="20">课程表UWP</TextBlock>
+                            <TextBlock Padding="3,0,20,0" FontSize="20" FontFamily="Microsoft YaHei"  Foreground="{ThemeResource SystemControlHyperlinkTextBrush}" FontWeight="Medium" >课程表UWP</TextBlock>
 
                             <Button Style="{StaticResource TextBlockButtonStyle}" ToolTipService.ToolTip="设置" Tag="设置" Tapped="Button_Tapped">
-                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE115;" Foreground="#66cc99"   />
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE115;" Foreground="#FF05572C"   />
                             </Button>
 
                             <Button Style="{StaticResource TextBlockButtonStyle}" ToolTipService.ToolTip="关于" Tag="关于" Tapped="Button_Tapped">
-                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE170;" Foreground="#ffffff" />
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE170;" Foreground="#FF04A52E" />
                             </Button>
-                                                                              
+                            <TextBlock FontSize="13" VerticalAlignment="Center" Padding="10,0,0,0">今天</TextBlock>
+                            <TextBlock FontSize="13" VerticalAlignment="Center" Padding="5,0,0,0" Foreground="#FF132BDC" x:Name="dayofweek" ></TextBlock>
                         </StackPanel>
                     </Grid>
-                </DataTemplate>
-            </Hub.HeaderTemplate>
+               
+            </Hub.Header>
 
             <HubSection Header="星期一" Width="Auto" Name="day1">
                 <DataTemplate >
@@ -196,7 +197,7 @@
                         <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" 
                                   ItemTemplateSelector="{StaticResource dii}" SelectionMode="None"
                                   ItemsSource="{Binding}" >
-                            
+
                         </ListView>
                     </Grid>
                 </DataTemplate>
@@ -272,85 +273,38 @@
             </HubSection>
 
 
-            <!--<HubSection Header="广告" Width="Auto" Name="ad">
+            <HubSection Header="广告" Width="Auto" Name="ad">
                 <DataTemplate >
                     <Grid>
-                        <JiuYouAdUniversal:AdControl  ApplicationKey="在这里输入广告商的key" 
-                                                      Width="300"
-                                                      Height="300"
-                                                      AdType="Interstitial"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="150"></RowDefinition>
+                            <RowDefinition Height="60"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <JiuYouAdUniversal:AdControl  ApplicationKey="08271c7a6d082bc34955c9db6021809e" 
+                                                      Width="300" VerticalAlignment="Center"
+                                                      Height="300" 
+                                                      AdType="Interstitial" />
+
+                        <StackPanel Orientation="Horizontal" Grid.Row="2">
+                            <HyperlinkButton NavigateUri="https://www.microsoft.com/store/apps/9nblggh5tqzp">
+                                <Image Source="ms-appx:///Assets/mouse.png" Height="140" Width="140" RenderTransformOrigin="0.5,0.5">
+                                    
+                                </Image>
+                            </HyperlinkButton>
+                            <HyperlinkButton Margin="10,0,0,0" NavigateUri="https://www.microsoft.com/store/apps/9nblggh5l63t">
+                                <Image Source="ms-appx:///Assets/310x150.png" Height="140" Width="140"></Image>
+                            </HyperlinkButton>
+                        </StackPanel>
+
+                        <HyperlinkButton Content="5星好评此应用" Grid.Row="3" NavigateUri="https://www.microsoft.com/store/apps/9NBLGGH4V0P5"></HyperlinkButton>
                     </Grid>
                 </DataTemplate>
 
-            </HubSection>-->
-
-
-
-
-
+            </HubSection>
 
         </Hub>
-
-
-
-
-
-
-
-
-
-
-        <!--<Pivot x:Name="pivot" Title="课程表"  >
-            <PivotItem x:Name="p0">
-                <Grid>
-                    <ListBox x:Name="SunFiles" 
-                             Style="{StaticResource Listbox_style}"
-                            Tapped="Tapped_Flyout" />
-                </Grid>
-            </PivotItem>
-            <PivotItem x:Name="p1">
-                <Grid>
-                    <ListBox x:Name="MonFiles" 
-                             Style="{StaticResource Listbox_style}"
-                             Tapped="Tapped_Flyout"/>
-                </Grid>
-            </PivotItem>
-            <PivotItem x:Name="p2">
-                <Grid>
-                    <ListBox x:Name="TuesFiles" 
-                             Style="{StaticResource Listbox_style}"
-                             Tapped="Tapped_Flyout"/>
-                </Grid>
-            </PivotItem>
-            <PivotItem x:Name="p3">
-                <Grid>
-                    <ListBox x:Name="WedFiles" 
-                             Style="{StaticResource Listbox_style}"
-                             Tapped="Tapped_Flyout"/>
-                </Grid>
-            </PivotItem>
-            <PivotItem x:Name="p4">
-                <Grid>
-                    <ListBox x:Name="ThursFiles" 
-                             Style="{StaticResource Listbox_style}"
-                             Tapped="Tapped_Flyout"/>
-                </Grid>
-            </PivotItem>
-            <PivotItem x:Name="p5">
-                <Grid>
-                    <ListBox x:Name="FriFiles" 
-                             Style="{StaticResource Listbox_style}"
-                             Tapped="Tapped_Flyout"/>
-                </Grid>
-            </PivotItem>
-            <PivotItem x:Name="p6">
-                <Grid>
-                    <ListBox x:Name="SatFiles" 
-                             Style="{StaticResource Listbox_style}"
-                             Tapped="Tapped_Flyout"/>
-                </Grid>
-            </PivotItem>
-        </Pivot>-->
 
     </Grid>
 </Page>

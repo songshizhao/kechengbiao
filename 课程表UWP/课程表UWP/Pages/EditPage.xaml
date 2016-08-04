@@ -13,7 +13,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Name="MainGrid"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="MainGrid"  Background="#99ccff">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -26,24 +26,39 @@
         </Grid.RowDefinitions>
 
         <!--输入文本框-->
-        <TextBlock Text="添加课程信息" FontSize="30" Margin="10,10" Grid.ColumnSpan="2"/>
+        <TextBlock Text="编辑课程信息" FontSize="30" Margin="10,10" Grid.ColumnSpan="2"/>
         <TextBox x:Name="nameTxt" Header="课程名称" Grid.Row="1" Margin="10,0,10,0" 
                  Text="{Binding Path=class_name_property,Mode=TwoWay}" />
 
         <TimePicker x:Name="start_time" Header="上课时间" Grid.Row="2" Margin="10,5,10,0" Time="{Binding startTime}"/>
         <TimePicker x:Name="end_time" Header="下课时间" Grid.Row="3"  Margin="10,5,10,0" Time="{Binding endTime}"/>
+        
         <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="10,5,10,0">
             <TextBox x:Name="weekTxt" Header="课程周数"  Width="100" Text="{Binding class_duration_property,Mode=TwoWay}"/>
-            <ComboBox x:Name="SorD" Header="单双周" Margin="80,0" SelectedIndex="0" SelectionChanged="SorD_SelectionChanged" >
+            <ComboBox x:Name="SorD" Header="单双周" Width="100" Margin="20,0,0,0"  SelectedIndex="{Binding class_weeklimit_property,Mode=TwoWay}">
                 <x:String>无</x:String>
                 <x:String>单周</x:String>
                 <x:String>双周</x:String>
             </ComboBox>
+            <ComboBox x:Name="classType" Header="课程类型" Width="100" Margin="20,0,0,0"  SelectedIndex="{Binding class_type_property,Mode=TwoWay}" >
+                <x:String>必修</x:String>
+                <x:String>选修</x:String>
+                <x:String>旁听</x:String>
+                <x:String>专业课</x:String>
+                <x:String>非学分绩</x:String>
+                <x:String>高学分绩</x:String>
+            </ComboBox>
         </StackPanel>
-        <TextBox x:Name="roomTxt" Header="课程教室" Text="{Binding class_room_property,Mode=TwoWay}" Grid.Row="5" Margin="10,5,10,0" />
-        <TextBox x:Name="teacherTxt" Header="课程教师" Text="{Binding class_teacher_property,Mode=TwoWay}" Grid.Row="6"  Margin="10,5,10,12"/>
+        
+        <StackPanel Grid.Row="5" Orientation="Vertical">
+            <TextBox x:Name="roomTxt" Header="课程教室" Text="{Binding class_room_property,Mode=TwoWay}"  Margin="10,5,10,0" />
+            <TextBox x:Name="teacherTxt" Header="课程教师" Text="{Binding class_teacher_property,Mode=TwoWay}" Grid.Row="6"  Margin="10,5,10,12"/>
+            <TextBox x:Name="teacherScore" Header="学分" Text="{Binding class_score_property,Mode=TwoWay}" Grid.Row="7"  Margin="10,5,10,12"/>
+        </StackPanel >
+        
+              
         <!--保存按钮-->
-        <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="10,0">
+        <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="10,0">
             <Button x:Name="save" Content="保存"   Click="save_Click"
                 Style="{StaticResource btn_style}" />
             <Button x:Name="cancel" Content="取消"   Margin="30,0"
